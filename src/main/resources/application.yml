@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: spring-cloud-stream-test-app
+  cloud:
+    function:
+      definition: testFlux|testImperative;testFlux|testAnotherImperative
+    stream:
+      bindings:
+        testFlux|testImperative-in-0:
+          group: first-group
+          destination: first-destination
+          auto-offset-reset: earliest
+          contentType: "application/json"
+        testFlux|testAnotherImperative-in-0:
+          group: first-group
+          destination: second-destination
+          auto-offset-reset: earliest
+          contentType: "application/json"
